@@ -6,6 +6,8 @@ import Flutter
     
     private let CHANNEL = "xh.zero/battery"
     
+//    private var testViewController: TestViewController!
+    
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -19,11 +21,19 @@ import Flutter
         [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
         // Note: this method is invoked on the UI thread.
         // Handle battery messages.
-        guard call.method == "getBatteryLevel" else {
+        switch (call.method) {
+        case "getBatteryLevel":
+            self?.receiveBatteryLevel(result: result)
+        case "startNativePage":
+            self?.startTestPage()
+        default:
             result(FlutterMethodNotImplemented)
-            return
         }
-        self?.receiveBatteryLevel(result: result)
+//        guard call.method == "getBatteryLevel" else {
+//            result(FlutterMethodNotImplemented)
+//            return
+//        }
+//        self?.receiveBatteryLevel(result: result)
     })
     
     GeneratedPluginRegistrant.register(with: self)
@@ -39,6 +49,23 @@ import Flutter
                                 details: nil))
         } else {
             result(Int(device.batteryLevel * 100))
+        }
+    }
+    
+    func startTestPage() {
+        if let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) {
+            if let vc = storyboard.instantiateViewController(withIdentifier: "TestViewController") as? TestViewController {
+//                window?.rootViewController?.addChildViewController()
+                window?.rootViewController?.present(vc, animated: true, completion: nil)
+            }
+//            {
+//                var myWindow = NSWindow(contentViewController: vc)
+//                myWindow.makeKeyAndOrderFront(self)
+//                let controller = NSWindowController(window: myWindow)
+//
+//                controller.showWindow(self)
+//
+//            }
         }
     }
 }

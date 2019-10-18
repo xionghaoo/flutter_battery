@@ -26,5 +26,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="Gbq-9T-WZO">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="DOs-6S-l1u" customClass="TestViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="clw-FU-tJu"/>
+                        <viewControllerLayoutGuide type="bottom" id="xZM-e3-FwA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eKG-X3-Ake">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原生页面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERL-QN-yB8">
+                                <rect key="frame" x="172.5" y="438" width="69.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsG-Sd-mYT">
+                                <rect key="frame" x="176" y="488.5" width="62" height="30"/>
+                                <state key="normal" title="关闭页面"/>
+                                <connections>
+                                    <action selector="onBack:" destination="DOs-6S-l1u" eventType="touchUpInside" id="bBt-yP-4zi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ERL-QN-yB8" firstAttribute="centerX" secondItem="eKG-X3-Ake" secondAttribute="centerX" id="OZA-u8-YVd"/>
+                            <constraint firstItem="WsG-Sd-mYT" firstAttribute="centerX" secondItem="eKG-X3-Ake" secondAttribute="centerX" id="aQy-Qe-JGu"/>
+                            <constraint firstItem="ERL-QN-yB8" firstAttribute="centerY" secondItem="eKG-X3-Ake" secondAttribute="centerY" id="bpl-e9-bCj"/>
+                            <constraint firstItem="WsG-Sd-mYT" firstAttribute="top" secondItem="ERL-QN-yB8" secondAttribute="bottom" constant="30" id="rVx-V9-Ciq"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEw-Bq-kiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802.89855072463774" y="20.758928571428569"/>
+        </scene>
     </scenes>
 </document>
