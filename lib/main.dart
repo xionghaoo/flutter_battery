@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_battery/screens/hello_word.dart';
 
 void main() => runApp(MyApp());
 
@@ -98,6 +99,16 @@ class _BatteryWidgetState extends State<BatteryWidget> {
     });
   }
 
+  Future<void> _startNativePage(String page) async {
+    try {
+      await platform.invokeMethod('startNativePage', <String, dynamic>{
+        'page': page
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -110,6 +121,17 @@ class _BatteryWidgetState extends State<BatteryWidget> {
               onPressed: _getBatteryLevel,
             ),
             Text(_batteryLevel),
+            RaisedButton(
+              child: Text('start flutter page'),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelloWorldWidget())
+              ),
+            ),
+            RaisedButton(
+              child: Text('start native page'),
+              onPressed: () => _startNativePage('test')
+            )
           ],
         ),
       ),

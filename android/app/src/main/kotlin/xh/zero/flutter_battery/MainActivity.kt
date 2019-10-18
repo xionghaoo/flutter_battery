@@ -22,16 +22,22 @@ class MainActivity: FlutterActivity() {
     GeneratedPluginRegistrant.registerWith(this)
 
     MethodChannel(flutterView, CHANNEL).setMethodCallHandler { call, result ->
-      if (call.method == "getBatteryLevel") {
-        val batteryLevel = getBatteryLevel()
+      when (call.method) {
+        "getBatteryLevel" -> {
+          val batteryLevel = getBatteryLevel()
 
-        if (batteryLevel != -1) {
-          result.success(batteryLevel)
-        } else {
-          result.error("UNAVAILABLE", "Battery level not available.", null)
+          if (batteryLevel != -1) {
+            result.success(batteryLevel)
+          } else {
+            result.error("UNAVAILABLE", "Battery level not available.", null)
+          }
         }
-      } else {
-        result.notImplemented()
+        "startNativePage" -> {
+          if (call.argument<String>("page") == "test") {
+            startActivity(Intent(this@MainActivity, TestActivity::class.java))
+          }
+        }
+        else -> result.notImplemented()
       }
     }
   }
